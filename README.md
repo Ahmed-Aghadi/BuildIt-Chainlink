@@ -207,7 +207,7 @@ BuildIt was built using the following technologies and tools:
 - Wallet Integration: Users can connect their wallets, such as Metamask, Coinbase, and WalletConnect, to interact with the metaverse.
 - Gasless Transactions: All smart contracts implement ERC2771Context, enabling users to perform gasless transactions when the relayer is funded.
 - Polygon LxLy bridge is used to transfer utils items from Polygon ZKEVM Testnet to Goerli and vice versa.
-- Chainlink CCIP is used to transfer utils items from Polygon Mumbai to Sepolia and vice versa.
+- Chainlink CCIP is used to transfer utils items between Avalanche Fuji Testet, Polygon Mumbai and Sepolia.
 - Sprucekit was used to let User Save/Load private designs
 - ENS was used to resolve custom name for users in marketplace
 
