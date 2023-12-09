@@ -92,18 +92,19 @@ async function addChain() {
   const utilsContractFactory = await hre.ethers.getContractFactory(
     "src/UtilsCCIP.sol:Utils"
   );
-  const utilsContract = await utilsContractFactory.attach(
-    addresses.source.chainAddress
-  );
-
-  console.log("Utils contract created");
-  console.log("Connecting user to Utils contract");
-  const utils = await utilsContract.connect(deployer);
-  console.log("User connected to Utils contract");
-
-  console.log("Setting chain id to chain selector");
 
   for (let i = 0; i < addresses.length; i++) {
+    const utilsContract = await utilsContractFactory.attach(
+      addresses[i].source.chainAddress
+    );
+
+    console.log("Utils contract created");
+    console.log("Connecting user to Utils contract");
+    const utils = await utilsContract.connect(deployer);
+    console.log("User connected to Utils contract");
+
+    console.log("Setting chain id to chain selector");
+
     console.log(
       "transaction arguments: ",
       addresses[i].destination.chainId,
