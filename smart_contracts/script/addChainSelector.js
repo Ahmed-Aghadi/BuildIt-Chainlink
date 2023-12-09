@@ -13,14 +13,30 @@ async function addChain() {
 
   const mumbaiChainId = 80001;
   const seopliaChainId = 11155111;
+  const avalancheFujiChainId = 43113;
 
-  // Chainlink CCIP Bridge uses chainId 12532609583862916517 for Polygon Mumbai and 16015286601757825753 for Sepolia
+  const isChainCCIP =
+    chainId == mumbai.chainId ||
+    chainId == seoplia.chainId ||
+    chainId == avalancheFuji.chainId;
+
+  if (!isChainCCIP) {
+    console.log("Chain is not CCIP");
+    return;
+  }
+
+  // Chainlink CCIP Bridge uses chainId 12532609583862916517 for Polygon Mumbai, 16015286601757825753 for Sepolia and 14767482510784806043 for Avalanche Fuji
   const replaceChainId = (_chainId) =>
-    _chainId == mumbaiChainId ? "12532609583862916517" : "16015286601757825753";
+    _chainId == mumbaiChainId
+      ? "12532609583862916517"
+      : _chainId == seopliaChainId
+      ? "16015286601757825753"
+      : "14767482510784806043";
 
   // Utils contract addresses
   const mumbaiAddress = "0x82BFe300311f0324423406382fC6bdccbC2BaB47";
   const seopliaAddress = "0xE9cEAe69B724F4340Ca3D6D2F0D147b0Bc3E1978";
+  const avalancheFujiAddress = "0x11DA0f57086a19977E46B548b64166411d839a30";
 
   const mumbai = {
     chainId: mumbaiChainId,
@@ -30,25 +46,48 @@ async function addChain() {
     chainId: seopliaChainId,
     chainAddress: seopliaAddress,
   };
-
-  // Bridge is available from mumbai to seoplia and vice versa AND from polygonZKEVMTestnet to goerli and vice versa
-  const addresses = {
-    source: {
-      ...(chainId == mumbai.chainId ? mumbai : seoplia),
-    },
-    destination: {
-      ...(chainId == mumbai.chainId ? seoplia : mumbai),
-    },
+  const avalancheFuji = {
+    chainId: avalancheFujiChainId,
+    chainAddress: avalancheFujiAddress,
   };
 
+  // Bridge is available between mumbai, seoplia and avalanche fuji AND between polygonZKEVMTestnet and goerli
+  const addresses = [
+    {
+      source: {
+        ...(chainId == mumbai.chainId
+          ? mumbai
+          : chainId == seoplia.chainId
+          ? seoplia
+          : avalancheFuji),
+      },
+      destination: {
+        ...(chainId == mumbai.chainId
+          ? seoplia
+          : chainId == seoplia.chainId
+          ? mumbai
+          : mumbai),
+      },
+    },
+    {
+      source: {
+        ...(chainId == mumbai.chainId
+          ? mumbai
+          : chainId == seoplia.chainId
+          ? seoplia
+          : avalancheFuji),
+      },
+      destination: {
+        ...(chainId == mumbai.chainId
+          ? avalancheFuji
+          : chainId == seoplia.chainId
+          ? avalancheFuji
+          : seoplia),
+      },
+    },
+  ];
+
   console.log("addresses: ", addresses);
-
-  const isChainCCIP = chainId == mumbai.chainId || chainId == seoplia.chainId;
-
-  if (!isChainCCIP) {
-    console.log("Chain is not CCIP");
-    return;
-  }
 
   const utilsContractFactory = await hre.ethers.getContractFactory(
     "src/UtilsCCIP.sol:Utils"
@@ -64,41 +103,43 @@ async function addChain() {
 
   console.log("Setting chain id to chain selector");
 
-  console.log(
-    "transaction arguments: ",
-    addresses.destination.chainId,
-    replaceChainId(addresses.destination.chainId)
-  );
+  for (let i = 0; i < addresses.length; i++) {
+    console.log(
+      "transaction arguments: ",
+      addresses[i].destination.chainId,
+      replaceChainId(addresses[i].destination.chainId)
+    );
 
-  let tx = await utils.setChainSelector(
-    addresses.destination.chainId,
-    replaceChainId(addresses.destination.chainId)
-  );
+    let tx = await utils.setChainSelector(
+      addresses[i].destination.chainId,
+      replaceChainId(addresses[i].destination.chainId)
+    );
 
-  console.log("----------------------------------");
-  console.log(tx);
-  let response = await tx.wait();
-  console.log("----------------------------------");
-  console.log(response);
+    console.log("----------------------------------");
+    console.log(tx);
+    let response = await tx.wait();
+    console.log("----------------------------------");
+    console.log(response);
 
-  console.log("Setting selector chain to chain selector");
+    console.log("Setting selector chain to chain selector");
 
-  console.log(
-    "transaction arguments: ",
-    replaceChainId(addresses.destination.chainId),
-    replaceChainId(addresses.destination.chainId)
-  );
+    console.log(
+      "transaction arguments: ",
+      replaceChainId(addresses[i].destination.chainId),
+      replaceChainId(addresses[i].destination.chainId)
+    );
 
-  tx = await utils.setChainSelector(
-    replaceChainId(addresses.destination.chainId),
-    replaceChainId(addresses.destination.chainId)
-  );
+    tx = await utils.setChainSelector(
+      replaceChainId(addresses[i].destination.chainId),
+      replaceChainId(addresses[i].destination.chainId)
+    );
 
-  console.log("----------------------------------");
-  console.log(tx);
-  response = await tx.wait();
-  console.log("----------------------------------");
-  console.log(response);
+    console.log("----------------------------------");
+    console.log(tx);
+    response = await tx.wait();
+    console.log("----------------------------------");
+    console.log(response);
+  }
 }
 
 addChain()
