@@ -88,6 +88,8 @@ To add destination chain data for cross chain transfer of utils:
 
 Update addresses to the latest deployed contract addresses in script/addChain.js and script/addChainSelector.js
 
+( NOTE: No need to run script/addChainSelector.js incase of Polygon ZKEVM Testnet or Goerli )
+
 ```bash
 npx hardhat run script/addChain.js --network $ChainName
 npx hardhat run script/addChainSelector.js --network $ChainName
