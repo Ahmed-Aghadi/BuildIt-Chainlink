@@ -320,7 +320,7 @@ public class CanvasManager : MonoBehaviour
     async void ShowTransferPanel()
     {
         var chainId = await ThirdwebManager.Instance.SDK.wallet.GetChainId();
-        if (chainId != 80001 && chainId != 5 && chainId != 11155111 && chainId != 1442)
+        if (chainId != 80001 && chainId != 5 && chainId != 11155111 && chainId != 1442 && chainId != 43113)
         {
             return;
         }
