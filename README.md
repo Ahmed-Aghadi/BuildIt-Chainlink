@@ -185,7 +185,7 @@ When a user connects their wallet, the game fetches data from the smart contract
 
 In addition, BuildIt includes a marketplace where users can sell their land through direct listings or auctions. Chainlink automation can be utilized for auction listings, and if the chain supports Chainlink price feeds, the land can be sold in USD. The marketplace provides an easy and secure way for users to trade their land.
 
-Also, users can transfer their util items from one chain to another ( using Polygon LxLy bridge and CCIP ). Polygon LxLy bridge is used to transfer utils items from Polygon ZKEVM Testnet to Goerli and vice versa whereas Chainlink CCIP is used to transfer utils items from Polygon Mumbai to Sepolia and vice versa
+Also, users can transfer their util items from one chain to another ( using Polygon LxLy bridge and CCIP ). Polygon LxLy bridge is used to transfer utils items from Polygon ZKEVM Testnet to Goerli and vice versa whereas Chainlink CCIP is used to transfer utils items between Avalanche Fuji Testet, Polygon Mumbai and Sepolia.
 
 While editing the map, user can also save/load private designs which is saved using sprucekit.
 
