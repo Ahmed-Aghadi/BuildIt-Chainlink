@@ -71,6 +71,12 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     // polygon zkevm testnet
     isPolygonZkvemBridgeRequired = true;
     polygonZkevmBridgeAddress = "0xF6BEEeBB578e214CA9E23B0e9683454Ff88Ed2A7";
+  } else if (chainId == 43113) {
+    // avalanche fuji testnet
+    routerAddress = "0x554472a2720e5e7d5d3c817529aba05eed5f82d8";
+    registryAddress = "0x819B58A646CDd8289275A87653a2aA4902b14fe6";
+    registrarAddress = "0xD23D3D1b81711D75E1012211f1b65Cc7dBB474e2";
+    linkAddress = "0x0b9d5D9136855f6FEc3c0993feE6E9CE8a297846";
   }
 
   console.log(

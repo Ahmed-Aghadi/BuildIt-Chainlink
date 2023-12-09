@@ -41,6 +41,9 @@ const OP_BNB_TESTNET_RPC_URL =
 const POLYGONZKEVM_TESTNET_RPC_URL =
   process.env.POLYGONZKEVM_TESTNET_RPC_URL ||
   "https://rpc.public.zkevm-test.net";
+const AVALANCHE_FUJI_TESTNET_RPC_URL =
+  process.env.AVALANCHE_FUJI_TESTNET_RPC_URL ||
+  "https://rpc.ankr.com/avalanche_fuji";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
 const MAIN_PRIVATE_KEY = process.env.MAIN_PRIVATE_KEY || "0x";
 
@@ -59,6 +62,8 @@ const MANTLE_TESTNET_API_KEY =
   process.env.MANTLE_TESTNET_API_KEY || "Your polygonscan API key";
 const ARBITRUM_GOERLI_TESTNET_API_KEY =
   process.env.ARBITRUM_GOERLI_TESTNET_API_KEY || "Your polygonscan API key";
+const AVALANCHE_FUJI_TESTNET_API_KEY =
+  process.env.AVALANCHE_FUJI_TESTNET_API_KEY || "Your polygonscan API key";
 const BSCSCAN_API_KEY =
   process.env.BSCSCAN_API_KEY || "Your polygonscan API key";
 const NODE_REAL_API_KEY =
@@ -213,6 +218,14 @@ module.exports = {
       chainId: 1442,
       timeout: 300000, // 300 seconds
     },
+    avalancheFujiTestnet: {
+      url: AVALANCHE_FUJI_TESTNET_RPC_URL,
+      // accounts: [MAIN_PRIVATE_KEY],
+      accounts: [PRIVATE_KEY],
+      saveDeployments: true,
+      chainId: 43113,
+      timeout: 300000, // 300 seconds
+    },
   },
   etherscan: {
     // To list networks supported by default: npx hardhat verify --list-networks
@@ -231,6 +244,7 @@ module.exports = {
       arbitrumGoerli: ARBITRUM_GOERLI_TESTNET_API_KEY,
       bscTestnet: BSCSCAN_API_KEY,
       opBNBTestnet: NODE_REAL_API_KEY,
+      avalancheFujiTestnet: AVALANCHE_FUJI_TESTNET_API_KEY,
     },
     customChains: [
       {
@@ -255,6 +269,16 @@ module.exports = {
         urls: {
           apiURL: "https://opbnbscan.com/api",
           browserURL: "https://opbnbscan.com/",
+        },
+      },
+      {
+        // https://docs.avascan.info/tutorial/smart-contract-submission
+        network: "avalancheFujiTestnet",
+        chainId: 43113,
+        urls: {
+          apiURL:
+            "https://api.avascan.info/v2/network/testnet/evm/43113/etherscan",
+          browserURL: "https://testnet.avascan.info/blockchain/c/",
         },
       },
     ],
