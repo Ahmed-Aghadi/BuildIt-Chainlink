@@ -118,6 +118,16 @@ Website can also be used which is build for webgl and will works on both desktop
 | [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x1b62E60b85678F5FF2fd6a8c27FB9dC7d5e1e2D4](https://testnet-zkevm.polygonscan.com/address/0x1b62E60b85678F5FF2fd6a8c27FB9dC7d5e1e2D4) |
 | [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0x53D04942C2861B1FeB79300beAF26D1C10cC769f](https://testnet-zkevm.polygonscan.com/address/0x53D04942C2861B1FeB79300beAF26D1C10cC769f) |
 
+## Smart Contracts ( Avalanche Fuji Testnet )
+
+| Contract                                                                                                 | Explorer Link                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Map.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Map.sol)                 | [0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E](https://testnet.avascan.info/blockchain/c/address/0xdF78D5A57DCFf31Ca18978b56760867010AEBC2E) |
+| [Utils.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Utils.sol)             | [0x11DA0f57086a19977E46B548b64166411d839a30](https://testnet.avascan.info/blockchain/c/address/0x11DA0f57086a19977E46B548b64166411d839a30) |
+| [Faucet.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Faucet.sol)           | [0x76cfdE04F691B93c9993Be24d5FE7667E7A8782C](https://testnet.avascan.info/blockchain/c/address/0x76cfdE04F691B93c9993Be24d5FE7667E7A8782C) |
+| [Marketplace.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Marketplace.sol) | [0x489d47E592639Ba11107E84dd6CCA08F0892E27d](https://testnet.avascan.info/blockchain/c/address/0x489d47E592639Ba11107E84dd6CCA08F0892E27d) |
+| [Forwarder.sol](https://github.com/Ahmed-Aghadi/BuildIt/blob/main/smart_contracts/src/Forwarder.sol)     | [0xCA34FF4068f042203087D475805c4DD8347cE958](https://testnet.avascan.info/blockchain/c/address/0xCA34FF4068f042203087D475805c4DD8347cE958) |
+
 ## Smart Contracts ( Polygon Mumbai )
 
 | Contract                                                                                                 | Explorer Link                                                                                                                   |
