@@ -44,6 +44,7 @@ public class ThirdwebManager : MonoBehaviour
         new ChainData("opbnb-testnet", "5611", null),
         new ChainData("binance-testnet", "97", null),*/
         new ChainData("goerli", "5", null),
+        new ChainData("avalanche-fuji", "43113", null),
     };
 
     [Header("APP METADATA")]

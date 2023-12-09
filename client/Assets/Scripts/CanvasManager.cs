@@ -279,6 +279,10 @@ public class CanvasManager : MonoBehaviour
         {
             destinationChainId = 1442;
         }
+        else if (chainDropdown.options[chainDropdown.value].text == "Avalanche Fuji Testnet")
+        {
+            destinationChainId = 43113;
+        }
         if (destinationChainId != -1)
         {
             int tokenId = ContractManager.EMPTY;
@@ -326,9 +330,16 @@ public class CanvasManager : MonoBehaviour
         if (chainId == 80001)
         {
             optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Sepolia" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Avalanche Fuji Testnet" });
         }
         else if (chainId == 11155111)
         {
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon Mumbai" });
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Avalanche Fuji Testnet" });
+        }
+        else if (chainId == 43113)
+        {
+            optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Sepolia" });
             optionDatas.Add(new TMP_Dropdown.OptionData() { text = "Polygon Mumbai" });
         }
         else if (chainId == 5)
