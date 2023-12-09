@@ -15,16 +15,6 @@ async function addChain() {
   const seopliaChainId = 11155111;
   const avalancheFujiChainId = 43113;
 
-  const isChainCCIP =
-    chainId == mumbai.chainId ||
-    chainId == seoplia.chainId ||
-    chainId == avalancheFuji.chainId;
-
-  if (!isChainCCIP) {
-    console.log("Chain is not CCIP");
-    return;
-  }
-
   // Chainlink CCIP Bridge uses chainId 12532609583862916517 for Polygon Mumbai, 16015286601757825753 for Sepolia and 14767482510784806043 for Avalanche Fuji
   const replaceChainId = (_chainId) =>
     _chainId == mumbaiChainId
@@ -86,6 +76,16 @@ async function addChain() {
       },
     },
   ];
+
+  const isChainCCIP =
+    chainId == mumbai.chainId ||
+    chainId == seoplia.chainId ||
+    chainId == avalancheFuji.chainId;
+
+  if (!isChainCCIP) {
+    console.log("Chain is not CCIP");
+    return;
+  }
 
   console.log("addresses: ", addresses);
 
